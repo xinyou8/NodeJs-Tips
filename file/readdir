@@ -1,0 +1,13 @@
+/**
+只是区分下各种read而已
+*/
+var fs = require("fs");
+
+fs.readdir("/test/",function(err, files){
+   if (err) {
+       return console.error(err);
+   }
+   files.forEach( function (file){
+       console.log( file );
+   });
+});
