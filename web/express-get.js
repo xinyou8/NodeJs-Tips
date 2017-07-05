@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
  
-app.use(express.static('public'));
+//设置静态文件路径
+app.use(express.static('public')); 
  
 app.get('/index.html', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
@@ -11,6 +12,7 @@ app.get('/process_get', function (req, res) {
  
    // 输出 JSON 格式
    var response = {
+       //通过req.query取get数据
        "first_name":req.query.first_name,
        "last_name":req.query.last_name
    };
