@@ -1,0 +1,15 @@
+/**
+只需要注意下路径问题
+‘D:/website/test’其中test是你想要创建的文件夹，D:/website是已经存在的路径。
+‘/website/test’也可以达到相同目的，会自动帮你加上‘D:’，此时磁盘为你此js所在的磁盘
+*/
+
+'use strict'
+var fs = require('fs');
+fs.mkdir('/website/test', function(err){
+    
+    if (err) {
+        return console.error(err);
+    }
+    console.log('ok');
+})
