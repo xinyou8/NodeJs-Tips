@@ -1,0 +1,35 @@
+'use strict'
+var util = require('util');
+function Base(){
+    this.name = 'base';
+    this.base = 1990; 
+    this.sayHello = function(){
+        console.log('Hello' + this.name);
+    };
+}
+Base.prototype.showName = function(){
+    console.log(this.name);
+};
+
+function Sub(){
+    this.name = 'sub';
+}
+util.inherits(Sub, Base);
+
+var objBase = new Base();
+var objSub = new Sub();
+objBase.showName();
+objSub.showName();
+//objSub.sayHello();
+
+console.log(objBase); 
+console.log(objSub);
+-----------------------------------------------------
+打印结果：
+base
+sub
+Base {name: "base", base: 1991, sayHello: }
+Sub {name: "sub"}
+
+说明：
+inherits这种继承只会继承原型prototype里的属性及函数，构造函数内部创造的属性及函数不会继承
