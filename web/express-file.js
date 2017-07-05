@@ -1,3 +1,16 @@
+/**
+bodyParser.json(options(可选))，返回一个仅仅用来解析json格式的中间件。
+                               这个中间件能接受任何body中任何Unicode编码的字符。支持自动的解析gzip和 zlib。
+bodyParser.urlencoded(options(可选))，返回一个用来解析body中的urlencoded字符的中间件 
+                                     只支持utf-8的编码的字符。同样也支持自动的解析gzip和 zlib。
+*/
+
+/**
+multer作为一个中间件传入了app.use，当有上传请求到来时，express会拦截此请求并通过multer组件完成上传操作
+在multer初始化方法中传入的是配置对象，我们可以在里面配置我们自定义的参数，例如“文件大小限制”，“文件数量限制”等等。
+不仅可以添加限制，还能给上传注册事件，
+*/
+
 var express = require('express');
 var app = express();
 var fs = require("fs");
