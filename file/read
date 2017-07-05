@@ -1,0 +1,35 @@
+/**
+首先，fs.readFile是读取文件，而fs.read是读取fs.open打开的文件。也就是说，fs.read必须在fs.open中用
+其次，fs.readFile是异步读取，所以，对数据的处理应该放在回调函数里。
+     fs.readFileSync是同步读取，所以，对数据的处理可以放到后面
+*/
+
+//使用readFile
+var fs = require('fs');
+
+var data = fs.readFile('./output.txt', function(err, data){
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data.toString());
+    }
+});
+
+
+//使用read --> fs.read(fd, buffer, offset, length, position, callback)
+var fs = require('fs');
+var buf = new Buffer(1024);
+
+fs.open('./output.txt', 'r+', function(err, fd){
+    if (err) {
+        console.log(err);
+    }
+    fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
+        if (err) {
+             console.log(err);
+        }
+        if (bytes>0) {
+            console.log(buf.slice(0, bytes).toString());
+        }   
+    })
+});
